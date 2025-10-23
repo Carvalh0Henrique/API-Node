@@ -32,6 +32,25 @@ app.get('/alunos', async (req, res) => {
     res.json(alunos);
 });
 
+app.put('/alunos/:id', async (req, res) => {
+    try {
+      if (!mongoose.isValidObjectId(req.params.id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+      }
+      const aluno = await Aluno.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true, overwrite: true }
+      );
+
+      if (!aluno) return res.status(404).json({ error: 'Aluno não encontrado' });
+      res.json(aluno);
+      
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+});
+
 // Iniciar servidor
 app.listen(process.env.PORT, () => 
     console.log(`Servidor rodando em http://localhost:${process.env.PORT}`)
