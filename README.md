@@ -1,4 +1,4 @@
-# NexusAPI
+# API_NODE
 
 Uma API de CRUD (Create, Read, Update, Delete) simples e robusta, construída com Node.js, Express e MongoDB. Este projeto serve como um boilerplate para iniciar rapidamente o desenvolvimento de APIs RESTful.
 
@@ -21,7 +21,7 @@ Siga as instruções abaixo para configurar e executar o projeto em seu ambiente
 **1. Clone o repositório:**
 ```bash
 git clone [https://github.com/seu-usuario/NexusAPI.git](https://github.com/seu-usuario/NexusAPI.git)
-cd NexusAPI
+cd API_NODE
 ```
 
 **2. Instale as dependências:**
@@ -52,16 +52,9 @@ O servidor estará rodando em `http://localhost:3000`.
 A estrutura de pastas foi organizada para manter o código limpo, escalável e de fácil manutenção, seguindo o princípio de Separação de Responsabilidades (SoC).
 
 ```
-NexusAPI/
+API_NODE/
 ├── .env                  # Variáveis de ambiente (não versionado)
 ├── .gitignore            # Arquivos ignorados pelo Git
 ├── package.json          # Dependências do projeto
-├── server.js             # Ponto de entrada da aplicação
-│
-└── src/
-    ├── config/           # Configuração de conexão com o banco de dados
-    ├── controllers/      # Camada que lida com requisições e respostas HTTP
-    ├── models/           # Definição dos schemas do banco de dados (Mongoose)
-    ├── routes/           # Definição das rotas e endpoints da API
-    └── services/         # Camada de lógica de negócio
+└── server.js             # Camada de entrada da API e Regra de negócio
 ```
