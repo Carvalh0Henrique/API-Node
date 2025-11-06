@@ -1,9 +1,17 @@
 import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 
 const app = express();
 app.use(express.json()); // API aceita JSON
+
+app.use(cors({
+  origin: 'http://localhost:4200', // URL do angular
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false
+}))
 
 mongoose.connect(process.env.MONGODB_URI, { dbName: 'Aula' })
   .then(() => console.log('MongoDB conectado'))
