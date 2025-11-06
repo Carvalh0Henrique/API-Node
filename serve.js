@@ -67,6 +67,21 @@ app.delete('/alunos/:id', async (req, res) => {
     }
 });
 
+app.get('/alunos/:id', async (req, res) => {
+    try {
+      if (!mongoose.isValidObjectId(req.params.id)) {
+        return res.status(400).json({ error: 'ID inválido' });
+      }
+
+      const aluno = await Aluno.findById(req.params.id);
+      if (!aluno) return res.status(404).json({ error: 'Aluno não encontrado' });
+      res.json(aluno);
+
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+});
+
 // Iniciar servidor
 app.listen(process.env.PORT, () => 
     console.log(`Servidor rodando em http://localhost:${process.env.PORT}`)
